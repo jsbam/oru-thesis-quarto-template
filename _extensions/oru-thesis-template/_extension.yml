@@ -17,7 +17,4 @@ contributes:
       # Default bibliography settings  
       reference-section-title: "References"
       csl: vancouver.csl
-# rename template files to thesis.qmd upon installation
-template:
-  rename:
-    template.qmd: thesis.qmd
+
