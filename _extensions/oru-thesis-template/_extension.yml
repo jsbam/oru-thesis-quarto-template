@@ -16,5 +16,4 @@ contributes:
         - vancouver-author-date.csl
       # Default bibliography settings  
       reference-section-title: "References"
-      csl: vancouver.csl
 

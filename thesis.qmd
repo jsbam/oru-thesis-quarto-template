@@ -44,13 +44,13 @@ list-of-papers: |
   
   Reprints were made with permission from the respective publishers.
 
-committee:
-  - name: "Committee Member 1"
-    title: "Ph.D."
-  - name: "Committee Member 2"
-    title: "Ph.D."
-  - name: "Committee Member 3"
-    title: "Ph.D."
+#committee:
+#  - name: "Committee Member 1"
+#    title: "Ph.D."
+#  - name: "Committee Member 2"
+#    title: "Ph.D."
+#  - name: "Committee Member 3"
+#    title: "Ph.D."
 
 # Bibliography settings - user can customize the reference title
 bibliography: reference.bib
