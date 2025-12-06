@@ -10,13 +10,21 @@ The extension attempts **ÖRU-compliant formatting**  and follows Örebro Univer
 
 ### Using the Extension
 
-To use this extension in your Quarto project:
+To use this extension in your (empty) Quarto project:
 
 ```bash
-quarto add https://github.com/jsbam/oru-thesis-quarto-template
+quarto use template jsbam/oru-thesis-quarto-template
 ```
 
-Or if you have already git cloned the repository, copy the `_extensions/oru-thesis-template` folder to your project directory.
+will clone the repository and set up the extension in your project with the starting `template.qmd` file renamed to `your-project-directory.qmd`.
+
+Or if you want to only use the format in your Quarto project:
+
+```bash
+quarto add jsbam/oru-thesis-quarto-template
+```
+
+will add the `_extensions/oru-thesis-template` folder to your project directory.
 
 ## Usage
 
