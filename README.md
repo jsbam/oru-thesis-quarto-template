@@ -1,20 +1,10 @@
-# ORU Thesis - Quarto Typst Format
+# ÖRU Thesis - Quarto Typst Format
 
-This is a Quarto extension for creating thesis documents following Örebro University (ORU) formatting guidelines using Typst.
+This is a Quarto extension created to reproduce Örebro University (ÖRU) thesis PDF templating. The official ÖRU thesis template is a MS Word document that needs to be converted to PDF (see `offical-oru-thesis-template` directory). This Quarto extension is an attempt to reproduce ÖRU thesis PDF applying ÖRU formatting guidelines using Quarto and Typst.
 
 ## Features
 
-- **ORU-compliant formatting**: Follows Örebro University thesis style guidelines
-- **Custom fonts**: Uses Trade Gothic Next and Sabon Next font families
-- **Structured front matter**: Title page, copyright page, abstract with keywords
-- **Table of contents**: Automatically formatted with ORU heading styles
-- **List of papers**: Optional section for thesis-based dissertations
-- **Dedication page**: Optional dedication/acknowledgment section
-- **Custom bibliography title**: User-definable reference section title
-- **Numbered headings**: Four levels of heading styles (H1-H4)
-- **Equation numbering**: Chapter-based equation numbering
-- **Figure captions**: ORU-styled figure and table captions
-- **Footer formatting**: Alternating footer with title/author and page numbers
+The extension attempts **ÖRU-compliant formatting**  and follows Örebro University thesis style guidelines.
 
 ## Installation
 
@@ -23,12 +13,97 @@ This is a Quarto extension for creating thesis documents following Örebro Unive
 To use this extension in your Quarto project:
 
 ```bash
-quarto add <path-to-oru-thesis-extension>
+quarto add https://github.com/jsbam/oru-thesis-quarto-template
 ```
 
-Or copy the `_extensions/oru-thesis-template` folder to your project directory.
+Or if you have already git cloned the repository, copy the `_extensions/oru-thesis-template` folder to your project directory.
 
 ## Usage
+
+Once you have installed the extension, you will see a `template.qmd` file in your project directory. Rendering the `template.qmd` will produce a PDF formatted according to ÖRU thesis guidelines. You can use this file as a starting point for your thesis document.
+
+Another approach is to create a `_quarto.yml` file in your project root with the following content:
+
+```yaml
+project:
+  type: book
+  output-dir: _output
+
+book:
+  title: "Thesis Title"
+  subtitle: "Subtitle"
+  author: "Author Name"
+  
+  # Define the structure of your thesis
+  chapters:
+    - index.qmd           # Front matter (abstract, dedication, etc.)
+    - 01-introduction.qmd
+    - 02-methods.qmd
+    - 03-results.qmd
+    - 04-conclusion.qmd
+
+# Thesis-specific metadata (global to all chapters)
+dept: "Department Name"
+year: "2025"
+month: "December"
+day: "4"
+
+abstract: |
+  This is fictitious abstract regarding the scientific literature on the association between obesity and type 2 diabetes mellitus. It was reported that our high BMI was associated with an increased risk of T2DM. This association was graded with higher BMI associated with a higher risk of T2DM. Also, among people with BMI ≥ 30, the risk of T2DM was greater before than after age 50. What are the mechanisms explaining these associations? Please add references of peer.
+
+  Regarding the scientific literature on the association between obesity and type 2 diabetes millets. It was reported that our high BMI was associated with an increased risk of T2DM. This association was graded with higher BMI associated with a higher risk of T2DM. Also, among people with BMI ≥ 30, the risk of T2DM was greater before than after age 50. What are the mechanisms explaining these associations? Please add references of peer.
+
+  Regarding the scientific literature on the association between obesity and type 2 diabetes mellites. It was reported that our high BMI was associated with an increased risk of T2DM. This association was graded with higher BMI associated with a higher risk of T2DM. Also, among people with BMI ≥ 30, the risk of T2DM was greater before than after age 50. What are the mechanisms explaining these associations? Please add references of peer.
+
+  The mechanisms explaining these associations? Please add refer regarding the scientific literature on the association between obesity and type 2 diabetes mellitus. It was reported that our high BMI. The mechanisms explaining these associations? Please add refer regarding the scientific literature on the association between obesity and type 2 diabetes mellitus. It was reported that our high BMI.
+
+keywords:
+  - Health literacy
+  - Chronic diseases
+  - Diabetes
+  - Obesity
+  - Hypertension
+  - Cardiovascular disease
+  - Diabetes mellitus
+  - Obesity
+  - Cardiovascular disease
+  - Diabetes mellitus
+  - Diabetes mellitus
+  - Obesity
+  - Card. Is even last line.
+
+dedication: |
+  Dedication/thanks to. This page is optional.
+
+list-of-papers: |
+  This thesis is based on the following studies, referred to in the text by their Roman numerals.
+  
+  1. Use the style sheet ORU_List of Papers. If not needed, the page should be deleted.
+  
+  2. LastName, FirstName, 2021. "Title of article. And possible subtitle". *Name of journal*, 1:1, 90–95 [volume, number and pages].
+  
+  3. Article/Study 3
+  
+  Reprints were made with permission from the respective publishers.
+
+committee:
+  - name: "Committee Member 1"
+    title: "Ph.D."
+  - name: "Committee Member 2"
+    title: "Ph.D."
+  - name: "Committee Member 3"
+    title: "Ph.D."
+
+# Bibliography settings - applies to all chapters
+bibliography: reference.bib
+csl: vancouver-author-date.csl
+reference-section-title: "Cited Works"
+
+# Format specification
+format:
+  oru-thesis-template-typst:
+    keep-typ: true
+```
 
 ### Basic Example
 
@@ -129,9 +204,11 @@ When you render your document, Quarto **automatically copies** these files from 
 ### Files You Must Provide
 
 **`reference.bib`** - Your bibliography file with citations
+
 - Create this file in your project root
 - Add your references in BibTeX format
 - Example:
+
   ```bibtex
   @article{Smith2020,
     author = {Smith, John},
@@ -158,12 +235,12 @@ bibliography: my-references.bib  # Use your own file
 To use a different citation style (other than Vancouver):
 
 1. **Download** a CSL file from:
+
    - [Zotero Style Repository](https://www.zotero.org/styles) (2000+ styles)
    - [Citation Style Language GitHub](https://github.com/citation-style-language/styles)
-
 2. **Place** the `.csl` file in your project root
-
 3. **Specify** it in your YAML:
+
    ```yaml
    csl: apa.csl                     # APA style
    # OR
@@ -197,16 +274,18 @@ format:
 The extension includes two Vancouver styles by default:
 
 1. **`vancouver.csl`** (default)
+
    - Numbered inline citations (1), (2,3)
    - References in bibliography numbered in order of appearance
-
 2. **`vancouver-author-date.csl`**
+
    - Author-date citations: (Smith 2020), (Smith 2020; Johnson 2021)
    - Unnumbered references in bibliography alphabetically ordered
 
 ### Fonts
 
 The template requires the following fonts:
+
 - **Trade Gothic Next** (and Trade Gothic Next HvyCd)
 - **Sabon Next**
 
@@ -242,6 +321,7 @@ quarto render template.qmd --to oru-thesis-template-typst
 ## Example Content
 
 See `template.qmd` for a complete working example with:
+
 - Multiple heading levels
 - Lists (bulleted and numbered)
 - Citations
@@ -253,6 +333,7 @@ See `template.qmd` for a complete working example with:
 ### Page Layout
 
 The template uses:
+
 - Page size: 157mm × 223mm
 - Margins: Top 1.8cm, Bottom 2.5cm, Inside 2.5cm, Outside 1.8cm
 - Font size: 11pt
@@ -274,7 +355,7 @@ your-thesis-project/
 ├── _extensions/
 │   └── oru-thesis/              # Extension folder
 │       ├── _extension.yml       # Extension configuration
-│       ├── typst-template.typ   # ORU thesis template
+│       ├── typst-template.typ   # ÖRU thesis template
 │       ├── typst-show.typ       # Quarto-Typst bridge
 │       ├── oru-logo-mono.svg    # Örebro logo (auto-copied)
 │       ├── vancouver.csl        # Citation style (auto-copied)
@@ -292,51 +373,63 @@ your-thesis-project/
 ## Troubleshooting
 
 ### Missing Fonts
+
 **Error**: Font not found errors
 
 **Solution**: Install the required fonts:
+
 - **Trade Gothic Next** (including HvyCd variant)
 - **Sabon Next**
 
 These are commercial fonts used by Örebro University. Contact your IT department if you don't have them.
 
 ### Logo Not Found
+
 **Error**: `file not found: oru-logo-mono.svg`
 
 **Solution**: The logo should auto-copy on first render. If it doesn't:
+
 1. Check that `oru-logo-mono.svg` exists in `_extensions/oru-thesis-template/`
 2. Manually copy it: `cp _extensions/oru-thesis-template/oru-logo-mono.svg .`
 3. Re-render: `quarto render your-thesis.qmd`
 
 ### CSL File Not Found
+
 **Error**: `file not found: vancouver.csl` (or other CSL file)
 
 **Solution**:
+
 - If using default Vancouver: Should auto-copy on render
 - If using custom CSL: Ensure the `.csl` file is in your project root
 - Check the filename matches your YAML: `csl: filename.csl`
 
 ### Bibliography Not Appearing
+
 **Error**: No references section in output
 
 **Check**:
+
 1. `bibliography: reference.bib` is in your YAML
 2. `reference.bib` file exists in your project root
 3. You have citations in your text: `[@Smith2020]`
 4. Citation keys in text match entries in `.bib` file
 
 ### Custom Bibliography Title Not Working
+
 **Error**: Bibliography shows "References" instead of custom title
 
 **Solution**: Use `reference-section-title` (not `bibliography-title`):
+
 ```yaml
 reference-section-title: "Your Custom Title"
 ```
 
 ### Using Custom CSL with Non-Vancouver Style
+
 **Question**: Can I use APA/Chicago/Nature style?
 
 **Answer**: Yes! Just:
+
 1. Download the CSL file from [Zotero Styles](https://www.zotero.org/styles)
 2. Place it in your project root
 3. Update YAML: `csl: apa.csl` (or whatever style you chose)
