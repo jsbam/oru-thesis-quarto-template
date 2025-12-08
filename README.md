@@ -88,32 +88,21 @@ format:
 
 ### Customizing Bibliography Title
 
-The extension supports user-defined bibliography title by setting the `reference-section-title` field. The default bibliography title is `References`, but you can specify other titles such as `reference-section-title: "Bibliography"` or `reference-section-title: "Litteraturförteckning"`.
+The default bibliography title is `References`, but the extension supports user-defined bibliography title by setting the `reference-section-title: "..."` field in the yaml header.
 
 ## Required Files and Setup
 
-If you install the extension, it will automatically set up the necessary files for you. But if you manually add the `_extensions/` folder to your project or with `quarto add jsbam/oru-thesis-quarto-template`, you need to ensure the following files are present.
 
 ### Files Automatically Provided
 
-When you render your document, Quarto **automatically copies** these files from the extension to your project directory:
+If you install the extension, it will automatically set up the necessary files for you to test the extension. These files are ÖRO logo (`oru-logo-mono.svg`), a bibliography file (`references.bib`), and a reference style (`vancouver.csl` for numbered bibliography and `vancouver-author-date.csl` for unnumbered bibliography as per ÖRU thesis template guideline).
 
-1. **`oru-logo-mono.svg`** - Örebro University logo (no action needed)
-2. **`vancouver.csl`** - Default citation style (numbered)
-3. **`vancouver-author-date.csl`** - Alternative citation style (author-date)
+If you manually add the `_extensions/` folder to your project or with `quarto add jsbam/oru-thesis-quarto-template`, make sure to provide a .bib file and .csl file in your document's yaml header if your document contain '@' citation. An '@' inline citation without `bibliography: ` and `csl: ` set in yaml header will fail to render. After your first quarto render with the extension set as format, the files  `vancouver.csl` and `vancouver-author-date.csl` will be copied in your project directory.
 
-### Files You Must Provide
-
-**A bibliography file**: `references.bib` or any `.bib` file in your project root with your references in BibTeX format.
-
-You can also use your own .csl file for citation styles. The extension provides `vancouver.csl` and `vancouver-author-date.csl` by default to allow users to a numbered and unnumbered style for the bibliography as per ÖRU style guideline.
-
-Simply specify your bibliography file in the YAML:
-
-```yaml
-bibliography: own-references.bib  # Use your own file
-csl: own-style.csl           # Use your own CSL file
-```
+>[!Tips]
+>The logo and CSL files are automatically copied from `_extensions/oru-thesis-template/` to your project root when you first render. You don't need to copy them manually!
+>If you manually add the extension, render a simple Quarto document with `format: oru-thesis-template`, which will copy `vancouver.csl`, `vancouver-author-date.csl`, and `oru-logo-mono.csl`. You can later build upon this document to experiment how the extension works.
+>
 
 csl styles can be downloaded from [Zotero Style Repository](https://www.zotero.org/styles) (2000+ styles) or [Citation Style Language GitHub](https://github.com/citation-style-language/styles).
 
@@ -122,11 +111,9 @@ csl styles can be downloaded from [Zotero Style Repository](https://www.zotero.o
 The extension includes two Vancouver styles by default:
 
 1. **`vancouver.csl`** (default)
-
    - Numbered inline citations (1), (2,3)
    - References in bibliography numbered in order of appearance
 2. **`vancouver-author-date.csl`**
-
    - Author-date citations: (Smith 2020), (Smith 2020; Johnson 2021)
    - Unnumbered references in bibliography alphabetically ordered
 
@@ -134,7 +121,7 @@ The extension includes two Vancouver styles by default:
 
 The template requires the following fonts:
 
-- **Trade Gothic Next** (and Trade Gothic Next HvyCd)
+- **Trade Gothic Next** (and **Trade Gothic Next HvyCd**)
 - **Sabon Next**
 
 Ensure these fonts are installed on your system before rendering.
@@ -157,24 +144,18 @@ The thesis document includes the following sections in order:
 Render your document using:
 
 ```bash
-quarto render template.qmd
+quarto render thesis.qmd
 ```
 
 Or:
 
 ```bash
-quarto render template.qmd --to oru-thesis-template-typst
+quarto render thesis.qmd --to oru-thesis-template-typst
 ```
 
 ## Example Content
 
-See `template.qmd` for a complete working example with:
-
-- Multiple heading levels
-- Lists (bulleted and numbered)
-- Citations
-- Mathematical equations
-- Figure references
+See `thesis.qmd` for a complete working example. The file include the content of [ÖRU thesis template in MS Word](https://www.oru.se/english/study/doctoral-studies/thesis-production/structure/guide-avhandlingsmallen2/).
 
 ## Customization
 
@@ -199,7 +180,7 @@ The template uses:
 ### After Installation
 
 ```
-your-thesis-project/
+your-project-directory/
 ├── _extensions/
 │   └── oru-thesis/              # Extension folder
 │       ├── _extension.yml       # Extension configuration
@@ -209,14 +190,12 @@ your-thesis-project/
 │       ├── vancouver.csl        # Citation style (auto-copied)
 │       └── vancouver-author-date.csl  # Alt citation style (auto-copied)
 ├── your-thesis.qmd              # Your thesis document
-├── reference.bib                # Your bibliography (YOU CREATE)
-├── oru-logo-mono.svg           # Auto-copied on first render
+├── your-reference.bib           # Your bibliography (YOU CREATE)
+├── oru-logo-mono.svg            # Auto-copied on first render
 ├── vancouver.csl                # Auto-copied on first render
-├── vancouver-author-date.csl   # Auto-copied on first render
+├── vancouver-author-date.csl    # Auto-copied on first render
 └── media/                       # Optional: for images
 ```
-
-**Note**: The logo and CSL files are automatically copied from `_extensions/oru-thesis-template/` to your project root when you first render. You don't need to copy them manually!
 
 ## Troubleshooting
 
@@ -257,10 +236,14 @@ These are commercial fonts used by Örebro University. Contact your IT departmen
 
 **Check**:
 
-1. `bibliography: reference.bib` is in your YAML
+1. `bibliography: reference.bib` or your custom .bib is in your YAML
 2. `reference.bib` file exists in your project root
 3. You have citations in your text: `[@Smith2020]`
 4. Citation keys in text match entries in `.bib` file
+
+>[!NOTE]
+>Efter the extension automatically add Bibliography at the end of the document, manually adding another #bibliography() call in the document will cause an error when renderig the document.
+>
 
 ### Custom Bibliography Title Not Working
 
@@ -274,8 +257,4 @@ reference-section-title: "Your Custom Title"
 
 ## License
 
-This template follows Örebro University formatting guidelines.
-
-## Credits
-
-Created for Örebro University thesis submissions using Quarto and Typst.
+This template was created for personal use.
