@@ -124,7 +124,7 @@ reference-section-title: "Litteraturförteckning"  # Swedish
 
 ## Required Files and Setup
 
-If you install the extension, it will automatically set up the necessary files for you. But if you manually add the `_extensions/oru-thesis-template/` folder to your project or with `quarto add jsbam/oru-thesis-quarto-template`, you need to ensure the following files are present.
+If you install the extension, it will automatically set up the necessary files for you. But if you manually add the `_extensions/` folder to your project or with `quarto add jsbam/oru-thesis-quarto-template`, you need to ensure the following files are present.
 
 ### Files Automatically Provided
 
@@ -136,75 +136,18 @@ When you render your document, Quarto **automatically copies** these files from 
 
 ### Files You Must Provide
 
-**`reference.bib`** - Your bibliography file with citations
+**A bibliography file**: `references.bib` or any `.bib` file in your project root with your references in BibTeX format.
 
-- Create this file in your project root
-
-- Add your references in BibTeX format
-
-- Example:
-
-``` bibtex
-@article{Smith2020,
-  author = {Smith, John},
-  title = {Article Title},
-  journal = {Journal Name},
-  year = {2020},
-  volume = {10},
-  pages = {1--10}
-}
-```
-
-### Using Custom Bibliography and Citation Styles
-
-#### Use Your Own `.bib` File
+You can also use your own .csl file for citation styles. The extension provides `vancouver.csl` and `vancouver-author-date.csl` by default to allow users to a numbered and unnumbered style for the bibliography as per ÖRU style guideline.
 
 Simply specify your bibliography file in the YAML:
 
 ``` yaml
-bibliography: my-references.bib  # Use your own file
+bibliography: own-references.bib  # Use your own file
+csl: own-style.csl           # Use your own CSL file
 ```
 
-#### Use Your Own `.csl` Style
-
-To use a different citation style (other than Vancouver):
-
-1.  **Download** a CSL file from:
-
-    -   [Zotero Style Repository](https://www.zotero.org/styles) (2000+ styles)
-    -   [Citation Style Language GitHub](https://github.com/citation-style-language/styles)
-
-2.  **Place** the `.csl` file in your project root
-
-3.  **Specify** it in your YAML:
-
-    ``` yaml
-    csl: apa.csl                     # APA style
-    # OR
-    csl: chicago-author-date.csl     # Chicago author-date
-    # OR
-    csl: nature.csl                  # Nature journal
-    # OR
-    csl: harvard-cite-them-right.csl # Harvard
-    ```
-
-#### Example: Using APA Style with Custom Title
-
-``` yaml
----
-title: "My Thesis"
-author: "Your Name"
-year: "2025"
-
-# Custom bibliography setup
-bibliography: my-thesis-references.bib
-csl: apa.csl
-reference-section-title: "References"  # or "Bibliography"
-
-format:
-  oru-thesis-template-typst: default
----
-```
+csl styles can be downloaded from [Zotero Style Repository](https://www.zotero.org/styles) (2000+ styles) or [Citation Style Language GitHub](https://github.com/citation-style-language/styles).
 
 ### Default Citation Styles Included
 
@@ -361,16 +304,6 @@ These are commercial fonts used by Örebro University. Contact your IT departmen
 ``` yaml
 reference-section-title: "Your Custom Title"
 ```
-
-### Using Custom CSL with Non-Vancouver Style
-
-**Question**: Can I use APA/Chicago/Nature style?
-
-**Answer**: Yes! Just:
-
-1.  Download the CSL file from [Zotero Styles](https://www.zotero.org/styles)
-2.  Place it in your project root
-3.  Update YAML: `csl: apa.csl` (or whatever style you chose)
 
 ## License
 
