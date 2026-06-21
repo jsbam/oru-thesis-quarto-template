@@ -11,11 +11,34 @@
   pad(x: 30pt, y: 15pt, body)
 }
 
+#set footnote.entry(
+  indent: 0cm,
+  //gap: 0.4cm,
+  clearance: 2.85pt
+)
+
+#show footnote.entry: it => {
+  let num = counter(footnote).at(it.note.location()).first()
+  
+  set text(size: 9.5pt)
+    
+  set par(
+    leading: 0.73em,
+  )
+  grid(
+    columns: (auto, 1fr),
+    column-gutter: 0.5em,
+    align()[#super[#num]],
+    it.note.body
+  )
+}
+
 #let thesis(
   title: none,
   subtitle: none,
   author: none,
   dept: none,
+  subject-area: none,
   year: none,
   month: none,
   day: none,
@@ -97,7 +120,7 @@
     row-gutter: 1.5em,
     rows: (auto, auto, auto, auto, auto),
     v(0.5em),
-    align(center + horizon)[Örebro University],
+    align(center + horizon)[Örebro Studies in #subject-area],
     v(0.5em),
     align(center + horizon)[#image(width: 70pt, "oru-logo-mono.svg")],
     v(0.5em),

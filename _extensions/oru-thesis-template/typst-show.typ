@@ -10,15 +10,16 @@ $if(subtitle)$
 $endif$
 $if(by-author)$
 $for(by-author)$
-$if(it.name.literal)$
   author: [$it.name.literal$],
-$endif$
 $endfor$
 $elseif(author)$
   author: [$author$],
 $endif$
 $if(dept)$
   dept: [$dept$],
+$endif$
+$if(subject-area)$
+  subject-area: [$subject-area$],
 $endif$
 $if(year)$
   year: [$year$],

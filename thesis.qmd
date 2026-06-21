@@ -1,8 +1,9 @@
 ---
-title: "Thesis Title"
+title: "Your Thesis Title"
 subtitle: "Subtitle"
 author: "Author Name"
 dept: "Department Name"
+subject-area: "Medicine"
 year: "2025"
 month: "December"
 day: "4"
@@ -70,8 +71,12 @@ When you want to start a new paragraph, just press Enter.
 
 ## [ORU_H2_Heading 2]
 
-ORU_Body text will always follow the style sheets for headings (ORU_H1–ORU_H5).
+ORU_Body text will always follow the style sheets for headings (ORU_H1–ORU_H5).[^1]
+
+
 Citation/quotation. Use the stylesheet ORU_Quotation for all longer quotations and an indent and smaller font will automatically be used [@Zomer-2016; @Arbaje-2008].
+
+[^1]: When you insert a new foot- or endnote you should click on [Tab] before you write the text to ensure the text is aligned correctly.
 
 ### [ORU_H3_Heading 3]
 
@@ -90,7 +95,7 @@ When you want to start a new paragraph, just press Enter.
 
 ORU_Body text will always follow the style sheets for headings (ORU_H1_Heading #1–ORU_H4_Heading #4).
 
-### ORU_H3_Heading #3
+### ORU_H4_Heading #3
 
 ORU_Body text will always follow the style sheets for headings (ORU_H1_Heading #1–ORU_H4_Heading #4).
 
