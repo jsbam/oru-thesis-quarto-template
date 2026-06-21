@@ -238,7 +238,8 @@
   }
 
   outline(
-    title: align(left, TOC_Heading([Table of contents])),
+    title: align(left, pad(
+      bottom: 0.8em, TOC_Heading([Table of contents]))),
     indent: 0em,
   )
 
