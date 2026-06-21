@@ -119,11 +119,11 @@
     columns: 1fr,
     row-gutter: 1.5em,
     rows: (auto, auto, auto, auto, auto),
-    v(0.5em),
+    v(2.7em),
     align(center + horizon)[Örebro Studies in #subject-area],
-    v(0.5em),
+    v(0.7em),
     align(center + horizon)[#image(width: 70pt, "oru-logo-mono.svg")],
-    v(0.5em),
+    v(0.7em),
     align(center + horizon)[#author],
     align(center, text(16pt, font: "Trade Gothic Next HvyCd")[#title]),
     align(center, text(12pt, font: "Trade Gothic Next HvyCd")[#subtitle]),
@@ -132,36 +132,46 @@
   pagebreak()
 
   // Copyright/publication page
-  grid(
+  rect(
+    width: 11.4cm,
+    height: 17.31cm,
+    //stroke: red,
+    stroke: none,
+  )[
+  #grid(
     columns: 1fr,
     row-gutter: 0.5em,
     rows: (1fr, auto, auto, auto, auto),
     v(1.0em),
-    align(left + horizon, text(0.8em, font: "Trade Gothic Next")[
+    align(left + horizon, text(10.5pt, font: "Trade Gothic Next")[
       *Author:* #author]),
-    align(left + horizon, text(0.8em, font: "Trade Gothic Next")[
+    align(left + horizon, text(10.5pt, font: "Trade Gothic Next")[
       *Title:* #title, #subtitle
     ]),
-    v(0.4em),
-    align(left + horizon, text(0.8em, font: "Trade Gothic Next")[
+    v(1.0em),
+    align(left + horizon, text(10.5pt, font: "Trade Gothic Next")[
       *Publisher:* Örebro University, #year
     ]),
-    align(left + horizon, text(0.8em, font: "Trade Gothic Next")[
+    align(left + horizon, text(10.5pt, font: "Trade Gothic Next")[
       www.oru.se/publikationer
     ]),
-    v(0.4em),
-    align(left + horizon, text(0.8em, font: "Trade Gothic Next")[
-      *Print:* Örebro University, Repro MM/YYYY (remove if not relevant)]),
-    align(left + horizon, text(0.8em, font: "Trade Gothic Next")[
+    v(1.0em),
+    align(left + horizon, text(10.5pt, font: "Trade Gothic Next")[
+      *Print:* Örebro University, Repro #month/#year (remove if not relevant)]),
+    align(left + horizon, text(10.5pt, font: "Trade Gothic Next")[
       *Cover image:* (remove if not relevant)
     ]),
-    v(0.4em),
-    align(left + horizon, text(0.8em, font: "Trade Gothic Next")[
-      *ISBN:* 978-91- XXXX-XXX-X (print)]),
-    align(left + horizon, text(0.8em, font: "Trade Gothic Next")[
+    v(3.0em),
+    align(left + horizon, text(10.5pt, font: "Trade Gothic Next")[
+      *ISBN:* XXX-XXXX (Entered by Repro)]),
+    align(left + horizon, text(10.5pt, font: "Trade Gothic Next")[
       *ISBN:* 978-91- XXXX-XXX-X (pdf)
-    ])
-  )
+    ]),
+    align(left + horizon, text(10.5pt, font: "Trade Gothic Next")[
+      *ISBN:* 978-91- XXXX-XXX-X (pdf)
+    ]),
+
+  )]
   pagebreak()
 
   // Abstract page
@@ -178,15 +188,17 @@
       dy: 0cm,
       grid(
         columns: 11.3cm,
-        rows: (0.79cm, 16.05cm, 2.46cm),
-        row-gutter: 0em,
+        // rows: (0.79cm, 16.05cm, 2.46cm),
+        rows: (0.79cm, 16.05cm, 1.16cm),
+        row-gutter: (0em, 1.0em),
         align: left,
-        stroke: 0.5pt,
+        stroke: none,
         align(left + horizon)[#text(TOC_Heading([Abstract]))],
         pad(top: 13pt)[#abstract],
         align(left + horizon)[Keywords: #keywords]
       ),
     )
+    v(1.0em)
   }
   pagebreak()
 
@@ -221,7 +233,7 @@
   show outline.entry.where(level: 4): it => {
     block(
       inset: (left: 1em),
-      ORU_H4_Heading_4(it),
+      ORU_H3_Heading_3(it),
     )
   }
 
